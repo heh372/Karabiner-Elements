@@ -1,0 +1,55 @@
+
+name: Karabiner assignment verification
+
+on:
+  push:
+    branches:
+      - main
+      - 'fix/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  targeted-tests:
+    name: Pipe key picker tests
+    runs-on: macos-26
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Check environment
+        run: |
+          sw_vers
+          xcodebuild -version
+          xcrun swiftc --version
+      - name: Run targeted tests
+        run: make -C tests/src/simple_modification_definitions
+
+  all-tests:
+    name: Full test suite
+    runs-on: macos-26
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Install build dependencies
+        run: brew install xz xcodegen cmake
+      - name: Run all tests
+        run: make -C tests
+
+  compile:
+    name: Compile project (no distribution packaging)
+    runs-on: macos-26
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Install build dependencies
+        run: brew install xz xcodegen cmake
+      - name: Compile
+        run: make build
