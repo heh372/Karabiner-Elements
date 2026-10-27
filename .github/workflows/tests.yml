@@ -1,5 +1,5 @@
 
-name: Karabiner assignment verification
+name: swift tests
 
 on:
   push:
