@@ -186,15 +186,15 @@
         ]
     },
     {
-+        "label": "pipe (|)",
-+        "not_from": true,
-+        "data": [
-+            {
-+                "key_code": "backslash",
-+                "modifiers": ["left_shift"]
-             }
-         ]
-     },
+        "label": "pipe (|)",
+        "not_from": true,
+        "data": [
+            {
+                "key_code": "backslash",
+                "modifiers": ["left_shift"]
+            }
+        ]
+    },
     {
         "label": "non_us_pound",
         "data": [
