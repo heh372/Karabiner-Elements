@@ -1,0 +1,15 @@
+  compile:
+    name: Compile fix
+    runs-on: macos-26
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Compile Swift component and run tests
+        run: |
+          make -C tests/src/simple_modification_definitions
+          test -f tests/src/simple_modification_definitions/build/simple_modification_definitions_test
+          echo "SWIFT COMPONENT COMPILATION SUCCESSFUL"
