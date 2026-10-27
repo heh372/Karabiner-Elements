@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   targeted-tests:
-    name: Pipe key picker tests
+    name: swift tests
     runs-on: macos-26
     timeout-minutes: 30
     steps:
@@ -29,7 +29,7 @@ jobs:
         run: make -C tests/src/simple_modification_definitions
 
   all-tests:
-    name: Full test suite
+    name: all tests
     runs-on: macos-26
     timeout-minutes: 90
     steps:
@@ -42,7 +42,7 @@ jobs:
         run: make -C tests
 
   compile:
-    name: Compile project (no distribution packaging)
+    name: compile project (no distribution packaging)
     runs-on: macos-26
     timeout-minutes: 90
     steps:
